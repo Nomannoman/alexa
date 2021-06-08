@@ -1,7 +1,102 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<aiml>
+<aiml version="2.0" encoding="UTF-8">
+
+   <category>
+        <pattern>HI</pattern>
+        <template>
+                Hello, How can I help you?
+                Do you want to 
+                a) Create a support ticket
+                b) Buy a new plan
+        </template>
+    </category>
+
+    <category>
+        <pattern>HELLO</pattern>
+        <template>
+                Hello, How can I help you?
+                Do you want to
+                a) Create a support ticket
+                b) Buy a new plan
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>A</pattern>
+        <template>
+                What is the severity? 1) p1 2) p2 3)p3
+                <think><set name="topic">ticket</set></think>
+        </template>
+    </category>
+
+
+    <topic name="ticket">
+    <category>
+        <pattern>abc</pattern>
+            <template>
+              Is your environment completely blocked?
+            </template>
+    </category>
+    </topic>
+
+    
+    <topic name="ticket2">
+    <category>
+        <pattern>abcd</pattern>
+            <template>
+              Is your environment completely blocked
+            </template>
+        </category>
+    </topic>
+    
+    <category>
+        <pattern>YES</pattern>
+        <template>
+        We have raised a ticket for you. Ticket number is 234567(Random). Use the ticket Id to track the progress.
+        </template>
+    </category>
+
+    
+    <category>
+        <pattern>NO</pattern>
+        <template>
+            Can you explain the problem?
+            When did u face the issue last time?Please enter the date
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <template>
+            We have raised a ticket for your issue on <star/>. Ticket number is 234567(Random). Use the ticket Id to track the progress.
+        </template>
+    </category>
+
+
+    <category>
+    <pattern>B</pattern>
+    <template> 
+         What is your organization size?
+    </template>
+    </category>
+
+    <category>
+    <pattern>SIZE IS *</pattern>
+    <template>
+        <set name = "size"> <star/></set>
+        What is your email ID?
+    </template>
+    </category>
+
   <category>
-    <pattern>*</pattern>
-    <template>I have no answer for that.</template>
-  </category>
+    <pattern>ty</pattern>
+    <template> 
+        Which plan do you want to select?
+        i.) Free Ad based
+        ii.) Proficient
+        iii.) Essential
+    </template>
+    </category>
+
+
 </aiml>
