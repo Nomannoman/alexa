@@ -21,10 +21,15 @@
     </category>
 
 
+
+
+
+
+
     <category>
         <pattern>A</pattern>
         <template>
-                What is the severity? 1) p1 2) p2 3)p3
+                What is the severity of the issue you are facing? 1) p1 2) p2 3)p3
                 <think><set name="topic">ticket</set></think>
         </template>
     </category>
@@ -32,71 +37,89 @@
 
     <topic name="ticket">
     <category>
-        <pattern>abc</pattern>
+        <pattern>P1</pattern>
             <template>
               Is your environment completely blocked?
+            <think><set name="topic">env</set></think>        
+              
             </template>
     </category>
-    </topic>
-
-    
-    <topic name="ticket2">
-    <category>
-        <pattern>abcd</pattern>
-            <template>
-              Is your environment completely blocked
-            </template>
-        </category>
-    </topic>
-    
-    <category>
-        <pattern>YES</pattern>
-        <template>
-        We have raised a ticket for you. Ticket number is 234567(Random). Use the ticket Id to track the progress.
-        </template>
+        <pattern>P2</pattern>
+        Can you explain the problem?
     </category>
 
-    
     <category>
-        <pattern>NO</pattern>
-        <template>
-            Can you explain the problem?
-            When did u face the issue last time?Please enter the date
-        </template>
+        <pattern>P3</pattern>
+        Can you explain the problem?
     </category>
 
     <category>
         <pattern>*</pattern>
+        Ok how many days before the problem had occured?
+        <think><set name="topic">date</set></think>        
+    </category>
+
+    <category>
+    </topic>
+
+
+     <topic name="date">
+     <category>
+        <pattern>*</pattern>
+        <template>Ok the issue has been noted and a ticket has been raised for the issue with the ID 2856</template>
+    </category>
+     </topic>
+    
+    
+    <topic name="env">
+    <category>
+        <pattern>YES</pattern>
+        <template>Ok the issue has been noted and a ticket has been raised for the issue with the ID 2856</template>
+    </category>
+    
+    <category>
+        <pattern>NO</pattern>
+        <srai>P2</srai>
+    </category>
+    </topic>
+
+
+
+
+ <category>
+        <pattern>B</pattern>
         <template>
-            We have raised a ticket for your issue on <star/>. Ticket number is 234567(Random). Use the ticket Id to track the progress.
-        </template>
-    </category>
-
-
-    <category>
-    <pattern>B</pattern>
-    <template> 
-         What is your organization size?
+        What is the organization size?
+        <think><set name="topic">buy</set></think>
     </template>
-    </category>
+</category>
 
+
+
+<topic name="buy">
     <category>
-    <pattern>SIZE IS *</pattern>
-    <template>
-        <set name = "size"> <star/></set>
-        What is your email ID?
-    </template>
-    </category>
+        <pattern>*</pattern>
+            <template>What is your email ID?</template>
+            <think><set name="topic">email</set></think>
+        </category>
 
-  <category>
-    <pattern>ty</pattern>
-    <template> 
-        Which plan do you want to select?
+
+</topic>
+
+
+
+
+<topic name="email">
+ <category> 
+ <pattern>*</pattern>
+ <template> Which plan do you want to select?
         i.) Free Ad based
         ii.) Proficient
         iii.) Essential
-    </template>
-    </category>
+</template>
+</category>
+</topic>
+
 
 
 </aiml>
